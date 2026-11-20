@@ -15,7 +15,7 @@ import pygame  # biblioteca de jogos
 from config import (FPS, LARGURA, ALTURA, CHAO_Y, INICIO, MORREU, VENCEU, SAIR, BRANCO, AZUL_ESCURO,
                     AZUL_BOTAO, VERMELHO, VERMELHO_ESCURO, VERDE, DOURADO,
                     VELOCIDADE_INICIAL, VELOCIDADE_MAXIMA, ACELERACAO, DISTANCIA_TOTAL,
-                    FRAMES_MIN_ENTRE_OBSTACULOS, FRAMES_MAX_ENTRE_OBSTACULOS, CHANCE_PRESENTE)  # constantes
+                    FRAMES_MIN_ENTRE_OBSTACULOS, FRAMES_MAX_ENTRE_OBSTACULOS, CHANCE_PRESENTE, PRESENTES_NECESSARIOS)  # constantes
 from sprites import Jogador, Obstaculo, Presente, PapaiNoel, criar_neve, SORTEIO_OBSTACULOS  # objetos do jogo
 from interface import Botao, desenhar_texto, desenhar_caixa  # ferramentas de tela
 
@@ -245,9 +245,13 @@ def tela_jogo(janela, assets, dados):
                 situacao = 'batendo'  # muda o estado
                 instante_fim = pygame.time.get_ticks()  # guarda quando aconteceu
             elif pygame.sprite.spritecollide(jogador, final, False, pygame.sprite.collide_mask):  # Papai Noel!
-                assets['som_vitoria'].play()  # som de vitória
-                situacao = 'chegou'  # muda o estado
-                instante_fim = pygame.time.get_ticks()  # guarda quando aconteceu
+                if dados['presentes'] >= PRESENTES_NECESSARIOS:  # pegou presentes suficientes?
+                    assets['som_vitoria'].play()  # som de vitória
+                    situacao = 'chegou'  # vai para YOU WIN!
+                else:  # chegou sem presentes suficientes
+                    assets['som_batida'].play()  # som de derrota
+                    situacao = 'batendo'  # vai para YOU DIED!
+                instante_fim = pygame.time.get_ticks()  # guarda quando aconteceu  
 
         elif situacao in ('batendo', 'chegou'):  # esperando para ir à tela final
             if pygame.time.get_ticks() - instante_fim > TEMPO_FINAL:  # já esperou o suficiente?

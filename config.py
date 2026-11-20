@@ -44,7 +44,8 @@ QUEDA_RAPIDA = 1.6  # gravidade extra quando aperta "abaixar" no ar (cai mais r�
 VELOCIDADE_INICIAL = 7.0  # pixels por frame que o chão anda no começo
 VELOCIDADE_MAXIMA = 12.5  # velocidade máxima que o chão pode atingir
 ACELERACAO = 0.0015  # quanto a velocidade aumenta a cada frame (o jogo vai ficando difícil)
-DISTANCIA_TOTAL = 36000  # distância (em pixels) até o Papai Noel aparecer
+DISTANCIA_TOTAL = 60000  # distância (em pixels) até o Papai Noel aparecer
+PRESENTES_NECESSARIOS = 15  # presentes mínimos para o Papai Noel aceitar a vitória
 
 #Espaço entre obstáculos
 # O espaço é medido em "frames de corrida": espaço = velocidade * frames.

@@ -87,13 +87,13 @@ def tela_final(janela, assets, dados, resultado):
         neve.draw(janela)  # desenha os flocos
 
         if venceu:  # textos da vitória
-            desenhar_texto(janela, 'YOU WIN!', assets['fonte_titulo_gigante'], DOURADO, (LARGURA // 2, 112),
+            desenhar_texto(janela, 'YOU WON!', assets['fonte_titulo_gigante'], DOURADO, (LARGURA // 2, 112),
                            cor_sombra=DOURADO_ESCURO)
             desenhar_texto(janela, 'Congrats!', assets['fonte_hohoho'], BRANCO, (LARGURA // 2, 186),
                            cor_sombra=VERMELHO)
             y_caixa = 236  # posição do contador de presentes
         else:  # textos da derrota
-            desenhar_texto(janela, 'YOU DIED!', assets['fonte_titulo_gigante'], BRANCO, (LARGURA // 2, 126),
+            desenhar_texto(janela, 'YOU LOST!', assets['fonte_titulo_gigante'], BRANCO, (LARGURA // 2, 126),
                            cor_sombra=VERMELHO)
             y_caixa = 218
 
